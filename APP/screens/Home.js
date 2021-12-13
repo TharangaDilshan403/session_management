@@ -4,7 +4,7 @@ import {StyleSheet, Text, SafeAreaView} from 'react-native';
 export default Home=()=>{
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Home dcdcds</Text>
+      <Text>Home</Text>
     </SafeAreaView>
   );
 }
