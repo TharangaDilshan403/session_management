@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -24,6 +24,28 @@ import Colors from '../constants/Colors';
 export default LigIn = ({navigation}) => {
   const [passwordShow, setPasswordShow] = useState(true);
   const [isChecked, setChecked] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+
+
+  const logInHandle = async () => {
+    const user = {userName, password};
+    if (password != '' && userName != '') {
+      fetch('https://reqres.in/api/login', {
+        method: 'POST',
+        headers: {
+          'content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      }).then(() => {
+        navigation.navigate('MainStackNavigation',{screen:"Home"})
+      });
+    } else {
+      alert('Please....');
+    }
+  };
+
+  
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: Colors.background}}>
@@ -41,10 +63,11 @@ export default LigIn = ({navigation}) => {
             <MaterialIcons name="person-outline" size={28} color="gray" />
             <TextInput
               style={[styles.Input]}
-              autoComplete="email"
               placeholder="Username"
               placeholderTextColor="gray"
               selectionColor="gray"
+              defaultValue={userName}
+              onChangeText={value => setUserName(value)}
             />
           </View>
 
@@ -57,6 +80,8 @@ export default LigIn = ({navigation}) => {
               placeholderTextColor="gray"
               secureTextEntry={passwordShow}
               selectionColor="gray"
+              defaultValue={password}
+              onChangeText={password => setPassword(password)}
             />
 
             <TouchableOpacity onPress={() => setPasswordShow(!passwordShow)}>
@@ -89,7 +114,8 @@ export default LigIn = ({navigation}) => {
 
           <TouchableOpacity
             style={styles.logInBtn}
-            onPress={() => navigation.navigate('Home')}>
+            onPress={() => logInHandle()}>
+            {/* navigation.navigate('MainStackNavigation',{screen:"Home"}) */}
             <Text style={styles.logInBtnText}>Login</Text>
           </TouchableOpacity>
 
@@ -109,6 +135,7 @@ export default LigIn = ({navigation}) => {
                     marginLeft: 5,
                     color: Colors.blue,
                     textDecorationLine: 'underline',
+                    fontWeight: 'bold',
                   },
                 ]}>
                 Register Now
