@@ -12,6 +12,8 @@ target 'session_management' do
     :hermes_enabled => false
   )
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'session_managementTests' do
     inherit! :complete
     # Pods for testing
