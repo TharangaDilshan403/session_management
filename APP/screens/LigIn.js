@@ -28,43 +28,6 @@ export default LigIn = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [isSave, setIsSave] = useState(false);
 
-  // const logInHandle = () => {
-
-  //   console.log(userName + '  ' + password);
-  //   if (userName === '' && password === '') {
-  //     alert('Enter email and password');
-  //   } else {
-  //     setIsSave(true);
-  //     fetch('https://reqres.in/api/login', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({email: userName, password: password}),
-  //     })
-  //       .then(e => {
-  //         return e.json();
-  //       })
-  //       .then(e => {
-  //         if (e.error) {
-  //           setIsSave(false);
-  //           alert('dscs ' + e.error);
-  //         } else {
-  //           setIsSave(false);
-  //           if (isChecked) {
-  //             dispatch(loginUser(e.token));
-  //         }
-  //           navigation.navigate('MainStackNavigation', {screen: 'Home'});
-  //         }
-  //         console.log(e);
-  //       })
-  //       .catch(err => {
-  //         setIsSave(false);
-  //         alert('Invalid user name or password');
-  //       });
-  //   }
-  // };
-
   const logInHandle = () => {
     console.log(userName, 'U');
     console.log(password, 'P');
